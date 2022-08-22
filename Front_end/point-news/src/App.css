@@ -1,0 +1,143 @@
+html, body{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: rgb(195, 195, 195);
+    
+    /* background-image: url(../public/background.png);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: 30%; */
+    
+    
+}
+
+
+/* --------NAV BAR-------------  */
+
+
+.header-container{
+    position: fixed;
+   
+}
+
+.logo{
+    display: flex;
+    width: 25%;
+    justify-content: flex-start;
+    position: fixed;
+}
+
+.nav{
+    display: flex;
+    list-style:none;
+    margin:0;
+    padding:0;
+    position: fixed;
+    margin-top: 15%;
+    z-index: 1000;
+    background-color: white;
+    width: 25%;
+    height: 100%;
+    margin-top: 14%;
+    
+}
+.nav li{
+    display:flex;
+    font-style: bold;
+    font-size: 125%;
+    text-align: left;
+    margin: 20%;
+    
+
+}
+
+.nav a:hover{
+    color: rgb(66, 126, 245)
+}
+
+.nav a{
+    /* display:inline-block; */
+    padding:0%;
+    text-decoration: none;
+    color: black;
+    font-family: 'Avenir';
+    margin-left: 100%;
+    font-weight: 500;
+    
+    
+    
+}
+
+/* --------FEED--------------  */
+
+.newsFeed {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.news-item-body {
+    width: 65%;
+    height: 20%;
+    background-color: white;
+    margin: .9%;
+    padding:0.6%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; 
+    border: 2px solid rgba(66, 126, 245);
+    box-shadow: rgba(66, 126, 245, 0.4) -5px 5px, rgba(66, 126, 245, 0.3) -10px 10px, rgba(66, 126, 245, 0.2) -15px 15px, rgba(66, 126, 245, 0.1) -20px 20px, rgba(66, 126, 245, 0.05) -25px 25px;
+}
+
+
+
+
+.news-img {
+    border-radius: .5rem;
+    border-color: black;
+    width: 20rem;
+    height: 10rem;
+    margin: 1%;
+    margin-left: 0;
+    
+}
+
+
+.points li{
+    font-family: 'Avenir';
+    margin: 1%;
+    
+    
+}
+
+.citation{
+    margin: 0px;
+    color: rgb(196, 196, 196);
+    font-family: 'Avenir';
+    font-size: smaller;
+}
+
+.image-points-container{
+    display: flex;
+    align-items: center;
+}
+
+.article-feed-container{
+    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 0%;
+    transform: translateX(-5%);
+    
+}
+.item-title{
+    margin: 0;
+    font-family: 'Avenir';
+    font-size: 140%;
+}
+
+
+
+
