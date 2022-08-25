@@ -13,7 +13,7 @@ sources = ["news.yahoo.com", "cbsnews.com", "cnn.com", "nytimes.com", "nbcnews.c
            "businessinsider.com", "politico.com", "bloomberg.com", "today.com", "foxbusiness.com", "nypost.com", "thehill.com", "thehillnews.org", "latimes.com", "hosted.ap.org", "breitbart.com", "wallstreet-online.de", "theverge.com"]
 
 
-def getArticleFeed(category):
+def getArticleFeed(category, num_articles):
     print("getArticleFeedCalled")
     feed = []
     q = QueryArticlesIter(categoryUri=category,
@@ -21,7 +21,7 @@ def getArticleFeed(category):
                           locationUri="http://en.wikipedia.org/wiki/United_States",
                           lang="eng", dateStart=pastWeek)
 
-    for i, ar in enumerate(q.execQuery(er, sortBy='socialScore', maxItems=4)):
+    for i, ar in enumerate(q.execQuery(er, sortBy='socialScore', maxItems=num_articles)):
         feed.append({
             'articleTitle': ar['title'],
             'articlePoints': addPoints(ar['body']),
