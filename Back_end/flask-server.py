@@ -28,6 +28,7 @@ def create_app():
 
     @app.route('/Politics')
     def post_politics():
+        print("politics routed")
         if cache.get('Politics') is None:
             cache.set('Politics', getArticleFeed(politics, 4))
         return cache.get("Politics")

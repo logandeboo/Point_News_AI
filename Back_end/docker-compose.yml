@@ -1,0 +1,9 @@
+version: "3.9"
+services:
+  web:
+    build: .
+    ports:
+      - "6379:6379"
+  redis:
+    image: "redis:latest"
+    command: ["redis-server", "--bind", "redis", "--port", "6379"]
