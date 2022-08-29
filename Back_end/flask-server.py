@@ -26,6 +26,10 @@ def create_app():
     app = Flask(__name__)
     cache.init_app(app)
 
+    @app.route('/')
+    def HelloWorld():
+        return "Hello World"
+
     @app.route('/Politics')
     def post_politics():
         print("politics routed")

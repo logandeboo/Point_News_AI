@@ -2,8 +2,7 @@
 FROM python:3.9-slim
 
 
-# By default, listen on port 5000
-EXPOSE 5001/tcp
+
 
 # Set the working directory in the container
 WORKDIR /server
@@ -22,9 +21,12 @@ COPY article_feed.py .
 COPY credentials.py .
 
 
-ENV PYTHONPATH /Back_end
+# ENV PYTHONPATH /Back_end 
+# ENV PORT = 8080
 
 
+# # By default, listen on port 5000
+EXPOSE 5001 
 
 # Specify the command to run on container start
 CMD [ "python", "./flask-server.py" ]
