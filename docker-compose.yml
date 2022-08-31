@@ -8,6 +8,7 @@ services:
     build: ./Back_end
     ports:
       - 5001:5001
+    
   db: 
     image: redis:latest
     ports:
