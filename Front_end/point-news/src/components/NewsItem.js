@@ -1,4 +1,4 @@
-
+import React, { Component }  from 'react';
 
 export default function NewsItem({title, points, url, image_url, date, source}){
     return (

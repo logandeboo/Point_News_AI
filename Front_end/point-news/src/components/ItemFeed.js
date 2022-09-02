@@ -1,11 +1,5 @@
 import NewsItem from './NewsItem'
-import React, { Component }  from 'react';
-
-
-import React, { useState, useEffect } from 'react'
-
-
-
+import React, { Component,useState, useEffect  }  from 'react';
 
 
 export default function ItemFeed({topic}) {
