@@ -2,6 +2,7 @@
 import Navbar from './components/Navbar'
 import './App.css'
 import ItemFeed from './components/ItemFeed'
+import React, { Component }  from 'react';
 
 
 
