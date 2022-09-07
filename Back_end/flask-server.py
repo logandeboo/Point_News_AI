@@ -24,6 +24,10 @@ cache = Cache(config={"CACHE_TYPE": "RedisCache",
 
 def create_app():
 
+    # TODO
+    # Write new logic to control when articles get added
+    # Refactor to remove duplicate code
+
     app = Flask(__name__)
     cache.init_app(app)
 
