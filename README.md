@@ -29,3 +29,6 @@ This project is exclusively designed to be a learning experience and demonstrati
 - Code comments for readability 
 - Hosting with AWS
 
+### Screenshots
+<img width="874" alt="Screen Shot 2022-09-08 at 4 19 26 PM" src="https://user-images.githubusercontent.com/49734611/189242214-4f2db0b8-4f65-4182-8b39-e568ebdca17b.png">
+
