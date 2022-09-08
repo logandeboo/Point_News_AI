@@ -27,4 +27,5 @@ This project is exclusively designed to be a learning experience and demonstrati
 ### Up Next 
 - Automatic daily article updates
 - Code comments for readability 
-- Hosting webstie with AWS
+- Hosting with AWS
+<img width="381" alt="Screen Shot 2022-09-08 at 2 26 47 PM" src="https://user-images.githubusercontent.com/49734611/189228921-286d7040-ae11-469c-b332-e8ecc9a6636b.png">
