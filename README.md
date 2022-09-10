@@ -7,7 +7,7 @@ into just three bullet points, users can get straight to the point while scannin
 ###### Back End
 - Python
 - Flask
-- RedisCache 
+- Redis
 - Docker
 
 ###### Front End
