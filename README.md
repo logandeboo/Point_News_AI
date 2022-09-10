@@ -1,7 +1,5 @@
 # Point_News_AI
 
-
-### Introduction
 Point News AI is a news aggregator that uses AI to enhance the online news experience. By using GPT-3 to condense articles
 into just three bullet points, users can get straight to the point while scanning over 25 different major publications.
 
