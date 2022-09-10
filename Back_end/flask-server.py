@@ -79,14 +79,18 @@ def create_app():
 
     @app.route('/Test')
     def test():
-        cache.set('Test', cache.get('Environment'))
         return cache.get("Test")
 
     def scheduledTask():
-        cache.set('Test', )
+        bisDict = cache.get("Business")
+        envDict = cache.get("Environment")
 
     if __name__ == "__main__":
+        scheduler.add_job(id='Scheduled task',
+                          func=scheduledTask, trigger='interval', seconds=5)
+        scheduler.start()
         app.run(debug=True, host="0.0.0.0", port=5001)
+
 
 # Testing update method
 # There should be a scheduled update method that does the "putting"
@@ -96,6 +100,10 @@ def create_app():
 # - Write method to update cache
 # - Use APScheduler to schedule said method
 # REMEMBER TO CHANGE REDIS HOST AFTER TESTING
+
+# TODO Updated
+# - No 'update' strategy is present in rediscache operators Sooo..
+# The solution is to get the route dictionary, append an new article(s) to it, then set the updated value
 
 
 def update_articles():

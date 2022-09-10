@@ -31,3 +31,6 @@ def getArticleFeed(category, num_articles):
             'articleSource': ar['source']})
 
     return json.dumps(feed, default=lambda o: o.__dict__, indent=4)
+
+    # json.dumps - python object -> json string
+    # json.loads - json string -> python dict
