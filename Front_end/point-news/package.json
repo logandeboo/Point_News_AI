@@ -1,5 +1,4 @@
 {
-  "homepage": "http://logandeboo.github.io/Point_News_AI",
   "name": "point-news",
   "version": "0.1.0",
   "private": true,
@@ -14,7 +13,7 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts --openssl-legacy-provider start",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "build": "react-scripts build",

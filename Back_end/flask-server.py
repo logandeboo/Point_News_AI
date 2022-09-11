@@ -1,3 +1,4 @@
+import json
 from flask import Flask
 from flask_caching import Cache
 from flask import Flask
@@ -37,7 +38,7 @@ def create_app():
     def post_politics():
         print("politics routed")
         if cache.get('Politics') is None:
-            cache.set('Politics', getArticleFeed(politics, 1))
+            cache.set('Politics', getArticleFeed(politics, 2))
         return cache.get("Politics")
 
     @app.route('/Business')
@@ -75,21 +76,24 @@ def create_app():
     def post_Environment():
         if cache.get('Environment') is None:
             cache.set('Environment', getArticleFeed(environment, 0))
-        return cache.get("Environment")
+        return cache.get("Test")
 
     @app.route('/Test')
     def test():
         return cache.get("Test")
 
-    def scheduledTask():
-        bisDict = cache.get("Business")
-        envDict = cache.get("Environment")
+    def scheduledTask(route_name):
+        temp = []
+        temp = json.loads(getArticleFeed(politics, 1))
+        temp.append(json.loads(cache.get("Politics")))
+        cache.set(route_name, json.dumps(
+            temp, default=lambda o: o.__dict__, indent=4))
 
     if __name__ == "__main__":
-        scheduler.add_job(id='Scheduled task',
-                          func=scheduledTask, trigger='interval', seconds=5)
-        scheduler.start()
-        app.run(debug=True, host="0.0.0.0", port=5001)
+        # scheduler.add_job(id='Scheduled task',
+        #                   func=scheduledTask, trigger='interval', seconds=25)
+        # scheduler.start()
+        app.run(debug=False, host="0.0.0.0", port=5001)
 
 
 # Testing update method
@@ -104,7 +108,8 @@ def create_app():
 # TODO Updated
 # - No 'update' strategy is present in rediscache operators Sooo..
 # The solution is to get the route dictionary, append an new article(s) to it, then set the updated value
-
+# json.dumps - python object -> json string
+# json.loads - json string -> python dict
 
 def update_articles():
     print(cache.get('Business'))

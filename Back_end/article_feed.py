@@ -1,4 +1,4 @@
-from hashlib import new
+from os import times
 from eventregistry import *
 from gpt import *
 from datetime import datetime, timedelta
@@ -14,7 +14,7 @@ sources = ["news.yahoo.com", "cbsnews.com", "cnn.com", "nytimes.com", "nbcnews.c
 
 
 def getArticleFeed(category, num_articles):
-    print("getArticleFeedCalled")
+    print("getArticleFeedCalled", num_articles)
     feed = []
     q = QueryArticlesIter(categoryUri=category,
                           sourceUri=QueryItems.OR(sources),
@@ -31,6 +31,3 @@ def getArticleFeed(category, num_articles):
             'articleSource': ar['source']})
 
     return json.dumps(feed, default=lambda o: o.__dict__, indent=4)
-
-    # json.dumps - python object -> json string
-    # json.loads - json string -> python dict
