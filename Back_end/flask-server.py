@@ -3,18 +3,15 @@ from flask import Flask
 from flask_caching import Cache
 from flask import Flask
 from article_feed import getArticleFeed
-from waitress import serve
 from flask_apscheduler import APScheduler
 
 
-business = 'news/Business'
-politics = 'news/Politics'
-health = 'news/Health'
-arts_and_entertainment = 'news/Arts_and_Entertainment'
-science = 'news/Science'
-sports = 'news/sports'
-technology = 'news/Technology'
-environment = 'news/Environment'
+# routes = ['Politics', 'Business', 'Health',
+#           'Entertainment', 'Science', 'Technology', 'Environment']
+
+routes = ['Politics']
+
+
 seconds_in_day = 86400
 
 
@@ -26,73 +23,55 @@ cache = Cache(config={"CACHE_TYPE": "RedisCache",
 
 def create_app():
 
-    # TODO
-    # Write new logic to control when articles get added
-    # Refactor to remove duplicate code
-
     app = Flask(__name__)
     cache.init_app(app)
     scheduler = APScheduler()
 
     @app.route('/Politics')
-    def post_politics():
-        print("politics routed")
-        if cache.get('Politics') is None:
-            cache.set('Politics', getArticleFeed(politics, 2))
+    def get_politics():
+        print("Politics route hit")
         return cache.get("Politics")
 
     @app.route('/Business')
-    def post_Business():
-        if cache.get('Business') is None:
-            cache.set('Business', getArticleFeed(business, 0))
+    def get_Business():
         return cache.get("Business")
 
     @app.route('/Health')
-    def post_Health():
-        if cache.get('Health') is None:
-            cache.set('Health', getArticleFeed(health, 0))
+    def get_Health():
         return cache.get("Health")
 
     @app.route('/Entertainment')
-    def post_Entertainment():
-        if cache.get('Entertainment') is None:
-            cache.set('Entertainment', getArticleFeed(
-                arts_and_entertainment, 0))
+    def get_Entertainment():
         return cache.get("Entertainment")
 
     @app.route('/Science')
-    def post_Science():
-        if cache.get('Science') is None:
-            cache.set('Science', getArticleFeed(science, 0))
+    def get_Science():
         return cache.get("Science")
 
     @app.route('/Technology')
-    def post_Technology():
-        if cache.get('Technology') is None:
-            cache.set('Technology', getArticleFeed(technology, 0))
+    def get_Technology():
         return cache.get("Technology")
 
     @app.route('/Environment')
-    def post_Environment():
-        if cache.get('Environment') is None:
-            cache.set('Environment', getArticleFeed(environment, 0))
-        return cache.get("Test")
+    def get_Environment():
+        return cache.get("Environment")
 
-    @app.route('/Test')
-    def test():
-        return cache.get("Test")
+    def scheduledUpdate():
+        print("Updating")
+        for route in routes:
+            temp = []
+            temp = json.loads(getArticleFeed("news/" + route, 1))
 
-    def scheduledTask(route_name):
-        temp = []
-        temp = json.loads(getArticleFeed(politics, 1))
-        temp.append(json.loads(cache.get("Politics")))
-        cache.set(route_name, json.dumps(
-            temp, default=lambda o: o.__dict__, indent=4))
+            if cache.get(route) is not None:
+                temp + json.loads(cache.get(route))
+
+            cache.set(route, json.dumps(
+                temp, default=lambda o: o.__dict__, indent=4))
 
     if __name__ == "__main__":
-        # scheduler.add_job(id='Scheduled task',
-        #                   func=scheduledTask, trigger='interval', seconds=25)
-        # scheduler.start()
+        scheduler.add_job(id='Scheduled Update',
+                          func=scheduledUpdate, trigger='interval', seconds=20)
+        scheduler.start()
         app.run(debug=False, host="0.0.0.0", port=5001)
 
 
@@ -110,9 +89,6 @@ def create_app():
 # The solution is to get the route dictionary, append an new article(s) to it, then set the updated value
 # json.dumps - python object -> json string
 # json.loads - json string -> python dict
-
-def update_articles():
-    print(cache.get('Business'))
 
 
 create_app()
