@@ -1,3 +1,4 @@
+from audioop import add
 import json
 from flask import Flask
 from flask_caching import Cache
@@ -58,20 +59,32 @@ def create_app():
 
     def scheduledUpdate():
         print("Updating")
+
         for route in routes:
-            temp = []
+            # retrieve new article to be added to feed
             temp = json.loads(getArticleFeed("news/" + route, 1))
 
+            # append contents of current JSON array into new JSON array, which starts with the new article
+            # contents will be null upon server initialization
             if cache.get(route) is not None:
-                temp + json.loads(cache.get(route))
+                for item in json.loads(cache.get(route)):
+                    temp.append(item)
 
             cache.set(route, json.dumps(
                 temp, default=lambda o: o.__dict__, indent=4))
 
+        # json.loads on cache returns array
+        # current = json.loads(cache.get('Environment'))
+        # for item in json.loads(cache.get('Environment')):
+        #     current.append(item)
+        # new = addition + current
+        # cache.set('Politics', new)
+        # print(current)
+
     if __name__ == "__main__":
-        scheduler.add_job(id='Scheduled Update',
-                          func=scheduledUpdate, trigger='interval', seconds=20)
-        scheduler.start()
+        # scheduler.add_job(id='Scheduled Update',
+        #                   func=scheduledUpdate, trigger='interval', seconds=45)
+        # scheduler.start()
         app.run(debug=False, host="0.0.0.0", port=5001)
 
 
@@ -88,7 +101,7 @@ def create_app():
 # - No 'update' strategy is present in rediscache operators Sooo..
 # The solution is to get the route dictionary, append an new article(s) to it, then set the updated value
 # json.dumps - python object -> json string
-# json.loads - json string -> python dict
+# json.loads - json string -> python object
 
 
 create_app()
