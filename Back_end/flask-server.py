@@ -1,4 +1,3 @@
-from audioop import add
 import json
 from flask import Flask
 from flask_caching import Cache
@@ -7,10 +6,10 @@ from article_feed import getArticleFeed
 from flask_apscheduler import APScheduler
 
 
-# routes = ['Politics', 'Business', 'Health',
-#           'Entertainment', 'Science', 'Technology', 'Environment']
+routes = ['Politics', 'Business', 'Health',
+          'Entertainment', 'Science', 'Technology', 'Environment']
 
-routes = ['Politics']
+# routes = ['Politics']
 
 
 seconds_in_day = 86400
