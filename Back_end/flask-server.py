@@ -24,54 +24,55 @@ def create_app():
     cache.init_app(app)
     scheduler = APScheduler()
 
+    # Route pages will be empty upon initialization of cloud instance
+    # Empty checks and cahce setting handle the first instance of this
+
     @app.route('/Politics')
     def get_politics():
         if cache.get("Politics") is None:
-            getArticleFeed("news/Politics", 1)
+            cache.set("Politics", getArticleFeed("news/Politics", 1))
         return cache.get("Politics")
 
     @app.route('/Business')
     def get_Business():
         if cache.get("Business") is None:
-            getArticleFeed("news/Business", 1)
+            cache.set("Business", getArticleFeed("news/Business", 1))
         return cache.get("Business")
 
     @app.route('/Health')
     def get_Health():
         if cache.get("Health") is None:
-            getArticleFeed("news/Health", 1)
+            cache.set("Health", getArticleFeed("news/Health", 1))
         return cache.get("Health")
 
     @app.route('/Entertainment')
     def get_Entertainment():
         if cache.get("Entertainment") is None:
-            getArticleFeed("news/Entertainment", 1)
+            cache.set("Entertainment", getArticleFeed("news/Entertainment", 1))
         return cache.get("Entertainment")
 
     @app.route('/Science')
     def get_Science():
         if cache.get("Science") is None:
-            getArticleFeed("news/Science", 1)
+            cache.set("Science", getArticleFeed("news/Science", 1))
         return cache.get("Science")
 
     @app.route('/Technology')
     def get_Technology():
         if cache.get("Technology") is None:
-            getArticleFeed("news/Technology", 1)
+            cache.set("Technology", getArticleFeed("news/Technology", 1))
         return cache.get("Technology")
 
     @app.route('/Environment')
     def get_Environment():
         if cache.get("Environment") is None:
-            getArticleFeed("news/Environment", 1)
+            cache.set("Environment", getArticleFeed("news/Environment", 1))
         return cache.get("Environment")
 
     def scheduledUpdate():
-
         for route in routes:
             # retrieve new article to be added to feed
             temp = json.loads(getArticleFeed("news/" + route, 1))
-
             # append contents of current JSON array into new JSON array, which starts with the new article
             for item in json.loads(cache.get(route)):
                 temp.append(item)
