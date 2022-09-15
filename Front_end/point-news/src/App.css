@@ -4,14 +4,7 @@ html, body{
 }
 
 body{
-    background-color: rgb(195, 195, 195);
-    
-    /* background-image: url(../public/background.png);
-    background-attachment: fixed;
-    background-position: center;
-    background-size: 30%; */
-    
-    
+    background-color: rgb(195, 195, 195);    
 }
 
 
@@ -59,7 +52,6 @@ body{
 }
 
 .nav a{
-    /* display:inline-block; */
     padding:0%;
     text-decoration: none;
     color: black;
