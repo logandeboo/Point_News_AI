@@ -48,7 +48,8 @@ def create_app():
     @app.route('/Entertainment')
     def get_Entertainment():
         if cache.get("Entertainment") is None:
-            cache.set("Entertainment", getArticleFeed("news/Entertainment", 1))
+            cache.set("Entertainment", getArticleFeed(
+                "news/Arts_and_Entertainment", 1))
         return cache.get("Entertainment")
 
     @app.route('/Science')
