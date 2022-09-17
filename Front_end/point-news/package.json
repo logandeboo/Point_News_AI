@@ -2,7 +2,7 @@
   "name": "point-news",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://127.0.0.1:5001/",
+  "proxy": "http://api:5001/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
