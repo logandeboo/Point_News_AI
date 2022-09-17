@@ -42,32 +42,32 @@ def create_app():
     @app.route('/Health')
     def get_Health():
         if cache.get("Health") is None:
-            cache.set("Health", getArticleFeed("news/Health", 1))
+            cache.set("Health", getArticleFeed("news/Health", 3))
         return cache.get("Health")
 
     @app.route('/Entertainment')
     def get_Entertainment():
         if cache.get("Entertainment") is None:
             cache.set("Entertainment", getArticleFeed(
-                "news/Arts_and_Entertainment", 1))
+                "news/Arts_and_Entertainment", 3))
         return cache.get("Entertainment")
 
     @app.route('/Science')
     def get_Science():
         if cache.get("Science") is None:
-            cache.set("Science", getArticleFeed("news/Science", 1))
+            cache.set("Science", getArticleFeed("news/Science", 3))
         return cache.get("Science")
 
     @app.route('/Technology')
     def get_Technology():
         if cache.get("Technology") is None:
-            cache.set("Technology", getArticleFeed("news/Technology", 1))
+            cache.set("Technology", getArticleFeed("news/Technology", 3))
         return cache.get("Technology")
 
     @app.route('/Environment')
     def get_Environment():
         if cache.get("Environment") is None:
-            cache.set("Environment", getArticleFeed("news/Environment", 1))
+            cache.set("Environment", getArticleFeed("news/Environment", 3))
         return cache.get("Environment")
 
     def scheduledUpdate():
