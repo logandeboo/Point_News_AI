@@ -1,9 +1,6 @@
 # Set base image (host OS)
 FROM python:3.9-slim
 
-
-
-
 # Set the working directory in the container
 WORKDIR /server
 
@@ -19,10 +16,6 @@ COPY flask-server.py .
 COPY gpt.py .
 COPY article_feed.py .
 COPY credentials.py .
-
-
-# ENV PYTHONPATH /Back_end 
-# ENV PORT = 8080
 
 
 # # By default, listen on port 5000

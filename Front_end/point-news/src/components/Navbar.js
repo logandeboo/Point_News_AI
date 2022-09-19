@@ -1,9 +1,9 @@
-import React, { Component }  from 'react';
+
 
 export default function Navbar() {
     return (
     <div >
-            <img class="logo" src="banner.png" alt="logo"></img>
+            <img className="logo" src="banner.png" alt="logo"></img>
             <nav className="nav">
                     <ul>
                         <li>

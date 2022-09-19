@@ -1,20 +1,21 @@
 import NewsItem from './NewsItem'
-import React, { Component,useState, useEffect  }  from 'react';
+import React, {useState, useEffect  }  from 'react';
 
 
 export default function ItemFeed({topic}) {
     const [data, setData] = useState([]);
-
     useEffect(() => {
         // GET request using fetch inside useEffect React hook
         fetch(topic)
             .then(response => response.json())
             .then(data => {
+                        
                         setData(data)
                         console.log(data)
+                        
                       }
                     )
-                  }, topic)
+                  }, [topic])
 
     return (
         <div className='article-feed-container'> 

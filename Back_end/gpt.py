@@ -7,6 +7,7 @@ openai.api_key = (
 
 def addPoints(articleBody):
     points = []
+
     response = openai.Completion.create(
         model="text-davinci-002",
         prompt="Summarize this into 3 bullet points for a college student:\n" +

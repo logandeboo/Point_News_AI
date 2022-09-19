@@ -17,7 +17,6 @@ services:
     volumes:
       - cache:/data
 
-# defines cache volume for use ^
 volumes:
   cache:
     

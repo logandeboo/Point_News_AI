@@ -1,3 +1,4 @@
+from email.quoprimime import body_check
 from os import times
 from eventregistry import *
 from gpt import *
@@ -21,13 +22,24 @@ def getArticleFeed(category, num_articles):
                           locationUri="http://en.wikipedia.org/wiki/United_States",
                           lang="eng", dateStart=pastWeek)
 
-    for i, ar in enumerate(q.execQuery(er, sortBy='socialScore', maxItems=num_articles)):
-        feed.append({
-            'articleTitle': ar['title'],
-            'articlePoints': addPoints(ar['body']),
-            'articleDate': ar['date'],
-            'articleUrl': ar['url'],
-            'articleImg': ar['image'],
-            'articleSource': ar['source']})
+    for i, ar in enumerate(q.execQuery(er, sortBy='socialScore', maxItems=10)):
+
+        temp = ar['body']
+        word_count = len(temp.split())
+
+        if i < num_articles:
+
+            # if word count is too large then skip this article and take one additional from the 10 returned
+            if word_count < 2500:
+
+                feed.append({
+                    'articleTitle': ar['title'],
+                    'articlePoints': addPoints(ar['body']),
+                    'articleDate': ar['date'],
+                    'articleUrl': ar['url'],
+                    'articleImg': ar['image'],
+                    'articleSource': ar['source']})
+            else:
+                num_articles = num_articles + 1
 
     return json.dumps(feed, default=lambda o: o.__dict__, indent=4)
