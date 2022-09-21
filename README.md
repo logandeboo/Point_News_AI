@@ -19,8 +19,12 @@ This project is exclusively designed to be a learning experience and demonstrati
 
 
 ### Limitations
-- No mobile support 
-- API costs limit the amount of content that can be posted
+- Cost to use GPT-3 limits the amount of content that can be posted
+- Few front end bugs:
+  - Need to upgrade to production build
+  - Pressing back causes components to disappear --> reloading the page makes them reappear 
+  - Console Warning: "Each child in a list should have a unique "key" prop
+  - Window resizing needs work
 
 ### Up Next 
 - Automatic daily article updates
