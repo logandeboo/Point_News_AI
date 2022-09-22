@@ -11,7 +11,7 @@ now = datetime.today()
 pastWeek = now - timedelta(days=7)
 pastWeek = pastWeek.strftime('%Y-%m-%d')
 sources = ["news.yahoo.com", "cbsnews.com", "cnn.com", "nytimes.com", "nbcnews.com", "foxnews.com", "cnbc.com", "forbes.com", "washingtonpost.com", "reuters.com", "msnbc.com", "buzzfeednews.com", "buzzfeed.com", "npr.org", "huffingtonpost.com",
-           "businessinsider.com", "politico.com", "bloomberg.com", "today.com", "foxbusiness.com", "nypost.com", "thehill.com", "thehillnews.org", "latimes.com", "hosted.ap.org", "breitbart.com", "wallstreet-online.de", "theverge.com"]
+           "businessinsider.com", "politico.com", "bloomberg.com", "today.com", "foxbusiness.com", "nypost.com", "thehill.com", "thehillnews.org", "latimes.com", "theverge.com"]
 
 
 def getArticleFeed(category, num_articles):
@@ -22,7 +22,10 @@ def getArticleFeed(category, num_articles):
                           locationUri="http://en.wikipedia.org/wiki/United_States",
                           lang="eng", dateStart=pastWeek)
 
-    for i, ar in enumerate(q.execQuery(er, sortBy='socialScore', maxItems=10)):
+    # change the way articles are sorted (by date)
+    # filter for duplicates
+
+    for i, ar in enumerate(q.execQuery(er, sortBy='date', maxItems=10)):
 
         temp = ar['body']
         word_count = len(temp.split())

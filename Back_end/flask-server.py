@@ -13,7 +13,7 @@ seconds_in_day = 86400
 
 
 cache = Cache(config={"CACHE_TYPE": "RedisCache",
-                      "CACHE_REDIS_HOST": "0.0.0.0",
+                      "CACHE_REDIS_HOST": "db",
                       "CACHE_REDIS_PORT": 6379,
                       "CACHE_DEFAULT_TIMEOUT": -1})
 
