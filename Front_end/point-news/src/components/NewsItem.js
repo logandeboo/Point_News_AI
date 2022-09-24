@@ -22,7 +22,7 @@ export default function NewsItem({title, points, url, image_url, date, source}){
                             </ul>
                         </div>
                     </div>
-        <div className="citation"> Published by: <a href={url}>{source}</a> on {date}</div>
+        <div className="citation"> Published by: <a target="_blank" href={url}>{source}</a> on {date}</div>
     </div>
 )
 }

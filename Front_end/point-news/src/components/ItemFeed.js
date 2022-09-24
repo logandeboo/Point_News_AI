@@ -11,8 +11,7 @@ export default function ItemFeed({topic}) {
             .then(data => {
                         
                         setData(data)
-                        console.log(data)
-                        
+
                       }
                     )
                   }, [topic])
