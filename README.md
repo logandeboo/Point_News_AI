@@ -18,15 +18,6 @@ into just three bullet points, users can get straight to the point while scannin
 ### Project Scope
 This project is exclusively designed to be a learning experience and demonstration of knowledge, not intended for production or commercial use. All news articles are gathered using [Event Registry](https://eventregistry.org/) and summarized by prompting OpenAI's [GPT-3](https://openai.com/blog/gpt-3-apps/) API.
 
-
-### Limitations
-- GPT-3 cost creates bottleneck 
-- Few front end bugs:
-  - Still in development build
-  - Pressing back causes components to disappear --> reloading the page makes them reappear 
-  - Console Warning: "Each child in a list should have a unique "key" prop
-  - Window resizing not up to standard
-
 ### TODO
 - CI/CD pipeline 
 - Upgrade to production build
