@@ -9,6 +9,7 @@ into just three bullet points, users can get straight to the point while scannin
 - Flask
 - Redis
 - Docker
+- AWS EC2-Linux
 
 ###### Front End
 - JavaScript
@@ -19,7 +20,7 @@ This project is exclusively designed to be a learning experience and demonstrati
 
 
 ### Limitations
-- Cost to use GPT-3 limits the amount of content that can be posted
+- GPT-3 cost creates bottleneck 
 - Few front end bugs:
   - Still in development build
   - Pressing back causes components to disappear --> reloading the page makes them reappear 
